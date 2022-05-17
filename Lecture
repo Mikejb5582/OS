@@ -1,6 +1,6 @@
 xfreerdp /u:student /v:10.50.24.101 /dynamic-resolution +glyph-cache +clipboard
 domain controller 10.20.0.1
-admin station             2  10.50.27.139
+admin station             2  10.50.37.69
 file_server               3
 workstation1              4
 workstation2              5
@@ -12,13 +12,35 @@ DAY1
     when you run powershell, you actually run system.management.automation.dll
     reads profiles -first thing that happens when powershell session is started
     $profile *** shows current profile
-    new-item -itemtype file -path $profile -force     *** creates new $profile
-    test-path $profile.~                              *** shows if profile is enabled
+    new-item -itemtype file -path $profile -force            *** creates new $profile
+    test-path $profile.~                                     *** shows if profile is enabled
     start-transcript *** starts log of your powershell session
-    get-member                                        *** properties and methods of an object ex. get-process | get-member
+    get-member                                               *** properties and methods of an object ex. get-process | get-member
        get-ciminstance -classname win32_logicaldisk -filter "drivetype=3" | get-member *** example of get-member 
     invoke-command -computername file-server,domain-controller,workstation2 {get-process} -asjob *** can run same command on multiple machines at once
-    $wc = new-object system.net.webclient             *** creates variable $wc that enables use of web api though variable
-    $wc.downloadfile(~URL~)                           *** dwonloads desired file 
-    expand-archive ~path to file~                     *** shows list of downloaded file contents
+    $wc = new-object system.net.webclient                    *** creates variable $wc that enables use of web api though variable
+    $wc.downloadfile(~URL~)                                  *** dwonloads desired file 
+    expand-archive ~path to file~                            *** shows list of downloaded file contents
+    
+DAY2
+
+    Get-itemproperty hklm:\software\microsoft\windows\currentversion\run -name calc
+        calc : C:\~\~\calc.exe
+        pspath:
+        psparentpath:
+        pschilditem:
+        psdrive:
+        psprovider:
+    new-item hklm:\~\~\~\~\~ -name imposter
+    
+    new-itemproperty ~~ -name wumbo -propertytype string -value "c:\windows32\system\chrome.exe" *** listed in get-itemproperty
+    
+    -name '(default)' -propertytype string -value 'exefile'                  *** overwrites default 
+          'content type'                          'application/x-msdownload' *** makes it executable
+          
+    ls registry::hkey_users
+    new-psdrive -name hku -psprovider registry -root hkey_users              *** only lasts for current session
+    
+    add-content -path $profile.allusersallhosts -value "new-psdrive -name hku -psprovider registry -root hkey_users" *** makes persistant, lasts past current powershell session
+    
     
