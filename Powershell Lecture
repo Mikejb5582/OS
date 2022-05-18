@@ -1,6 +1,6 @@
 xfreerdp /u:student /v:10.50.24.101 /dynamic-resolution +glyph-cache +clipboard
-domain controller 10.20.0.1
-admin station             2  10.50.37.69
+domain controller 10.21.0.1
+admin station             2  10.50.38.234
 file_server               3
 workstation1              4
 workstation2              5
@@ -23,7 +23,7 @@ DAY1
     expand-archive ~path to file~                            *** shows list of downloaded file contents
     
 DAY2
-
+    cd hklm:\
     Get-itemproperty hklm:\software\microsoft\windows\currentversion\run -name calc
         calc : C:\~\~\calc.exe
         pspath:
@@ -43,4 +43,4 @@ DAY2
     
     add-content -path $profile.allusersallhosts -value "new-psdrive -name hku -psprovider registry -root hkey_users" *** makes persistant, lasts past current powershell session
     
-    
+    gci -r -fi readme
