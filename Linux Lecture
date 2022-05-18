@@ -1,0 +1,28 @@
+                      mkdir .ssh
+                      vim .ssh/config 
+                            Host linops
+                         HostName 10.50.27.247
+                         Port 22
+                         User student
+                      chmod 600 .ssh/config
+                      ssh linops
+                      ssh-keygen *** enter enter enter
+                      ssh-copy-id linops
+                      ssh linops 
+                      ben
+                      vim .bash_aliases
+                          alias sshops='ssh linops -X'
+                      source .bashrc
+                      sshops
+                      
+DAY1
+
+      ss -ntlp *** helpful enumeration command
+      ip a
+      ip n
+      ip r
+      route
+      w/who/whoami
+      iptables -L
+      
+      
