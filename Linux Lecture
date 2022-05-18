@@ -24,5 +24,10 @@ DAY1
       route
       w/who/whoami
       iptables -L
+      id 
       
-      
+      wmic
+      useraccount get name,sid
+      getent group lodge *** find users of a group
+      find / type -d -name Bibliotheca *** finds path of elusive file
+      sudo -u username command
