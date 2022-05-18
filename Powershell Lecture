@@ -44,3 +44,5 @@ DAY2
     add-content -path $profile.allusersallhosts -value "new-psdrive -name hku -psprovider registry -root hkey_users" *** makes persistant, lasts past current powershell session
     
     gci -r -fi readme
+    
+    get-childitem -force | ? {$_.length -ne 0} | gc
