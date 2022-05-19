@@ -46,3 +46,31 @@ DAY2
     gci -r -fi readme
     
     get-childitem -force | ? {$_.length -ne 0} | gc
+    
+    
+WINDOWS BOOT PROCESS
+
+    bios 
+    mbr > bootmgr > bcd > winload.exe/winresume.exe > ntoskrnl.exe
+    uefi
+    gpt > bootmgrfw.efi > bcd > winload.efi/winresume.efi > ntoskrnl.exe
+    
+    get-content C:\windows\panther\setupact.log | select-string "detected boot environment" *** tells you boot process used
+    
+    bcdedit | findstr /i winload *** tells you if winload in an .exe or .efi 
+    
+    ntoskrnl loads registry
+    
+  In Command Line
+    system32\>bcdedit /set {current} description "Windows 10"
+                      /create {deez} /d "Windows 10 - House of Cards"
+                      /set {deez} device partition=c:
+                      /set {deez} path \deez
+                      /displayorder {deez} /addfirst
+                      /set {deez} safeboot minimal
+                      /deletevalue {deez} safeboot
+                      /delete {deez} /f
+    
+    
+                      
+    
