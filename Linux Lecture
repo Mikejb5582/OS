@@ -31,3 +31,40 @@ DAY1
       getent group lodge *** find users of a group
       find / type -d -name Bibliotheca *** finds path of elusive file
       sudo -u username command
+      ls -lisa
+      find -name ".*" -type f *** searches for hidden files 
+
+DAY2
+
+      bios > mbr > grub > kernel > init(sysv/systemd) > runlevels
+      lsblk *** display mount points of block devices
+      df -h *** additional info
+      du -h
+      sudo xxd -l 512 -g 1 /dev/sda *** print hex demp of file
+      ltrace -S /etc/passwd prints system and library calls
+      
+      run levels:
+      0 - halted                   *** poweroff.target
+      1 - single-user (root)       *** rescue.target
+      2 - multi-user (login)       *** multi-user.target
+      3 - multi-user (networking)  *** multi-user.target
+      4 - user-defined             *** multi-user.target
+      5 - gui                      *** graphical.target
+      6 - reboot                   *** reboot.target
+      
+      ls -l /sbin/init             *** shows run level 
+      cat /etc/inittab             *** shows default run levels (configuration file)
+      ls /etc/rc0.d                *** shows things ran at level 0
+      /etc/init.d                  *** important or something idk 
+      ps -p 1                      *** shows either init(sysv) or systemd
+      /etc/systemd/system          *** ran from 
+      /lib/systemd/system          *** configure
+      
+      systemctl list-dependencies default.target *** green = active, white = inactive, red = stopped, x = error
+      systemctl show -p Wants default.target
+      systemctl list-unit-files
+      
+      dd if =<file> of=<file>
+      bs=1 count=512(# of bytes)
+      skip=<#of bytes>
+      dd if=mbroken skip=446 bs=1 count=16 | md5sum *** hash of first partition
