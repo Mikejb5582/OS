@@ -72,5 +72,19 @@ WINDOWS BOOT PROCESS
                       /delete {deez} /f
     
     
-                      
+DAY5
+    
+    gwmi win32_process | sort processid | ft name, processid
+    get-scheduledtask
+    tasklist /m /fi  "IMAGENAME POWERSHELL.EXE"
+    get-ciminstance win32_process | where { $_.name -like "calculator.exe" } | select name, processid, parentprocessid, path, commandline
+    netstat
+    procexp64.exe -accepteula / procexp *** details which programs in a user's system have a specific file or directory open
+    autoruns -accepteula                *** shows all programs that run automatically 
+    sigcheck -m C:\Windows\System32\Malware.exe                                *** can see requested execution level
+    Get-item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System   *** where user account control settings are located
+    listdlls                            *** reports .dlls loaded into processes
+    loadord                             *** shows service load order
+    
+    
     
