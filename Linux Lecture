@@ -68,3 +68,35 @@ DAY2
       bs=1 count=512(# of bytes)
       skip=<#of bytes>
       dd if=mbroken skip=446 bs=1 count=16 | md5sum *** hash of first partition
+      
+      
+      
+DAY6
+
+    ps               *** has alot of fire options
+    ps --ppid 1 -lf  *** gives all files with a parent process id of 1
+    ps -elf --forest *** trees
+    ps -elf | head -n50
+    
+    euid defines the access rights for a process
+    ruid indicates who initiated a process
+    fork() when called, kernel creates a nearly identical copy of process
+    exec() process calls kernel, kernel starts program, replacing current process
+    
+    sysv:
+    service <service name> [status] stop,start,restart
+    systemd:
+    systemctl [status] <service name>
+    
+    cron daemon checks /var/spool/cron, /etc/cron.d/ /etc/crontab per minute. executes any commands according to time.
+    jobs *** list of jobs running in background
+    cron jobs *** run as root and rigidly sceduled or system-wide maintenance tasks (cleaing /tmp or rotating logs)
+    
+    sudo ls -l /proc/1600
+    sudo lsof | tail -30
+    r/w/u read/write/both
+    sudo lsof -p 1600 *** filters on pid of 1600
+    sudo lsof -c sshd *** filter on sshd
+    sudo lsof -i ls
+    -P -n
+    
