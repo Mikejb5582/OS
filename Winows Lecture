@@ -87,4 +87,56 @@ DAY5
     loadord                             *** shows service load order
     
     
+DAY7
+    
+    MRU - most recent user "RunMRU" in hkcu\software\microsoft\windows\currentversion\explorer\runmru
+    hkey_current_user\software\microsoft\windows\currentversion\explorer\recentdocs
+    lastvisitedpidmru - in explorer\ComDlg32
+    usb drives in registry - hklm\system\controlset001\enum\ts_usb_hub_enumerator\umb\*
+    any devices mounted by os - hklm\system\mounteddevices
+    recentdocs - hkcu
+    winlogon - hklm
+    
+    
+    get-localuser | select name,sid
+    get-wmiobject win32_useraccount | select name,sid *** same commands
+    wmic UserAccount get name,sid *** same thing but in command prompt
+    
+    wmic useraccount where 'sid="***"' get name
+    get-content 'C:\$recycle.bin' -recurse -verbose -force | select *
+    gci -path 'C:\windows\prefetch' -erroraction continure | select * | select-first 5
+    gci -recurse C:\users\*\appdata\roaming\microsoft\windows\recent -erroraction continue | select fullname, lastaccesstime
+    
+    .\strings.exe -accepteula 'C:\Users\<username>\AppData\Local\Google\Chrome\User Data\Default\History'
+    
+    Auditing
+        View entire auditpol list
+            auditpol /get /category:*
+        Set File System subcategory to audit
+            auditpol /set /subcategory:"File System"
+        Remove File System subcategory auditing
+            auditpol /set /subcategory:"File System" /success:disable
+        To list the global object access auditing entries set on files or folders:
+            auditpol /resourceSACL /type:File /view
+    
+    C:\Windows\System32\Winevt\eventvwr *** event logs
+    
+    show all logs
+        wevtutil el
+    get log info
+        wevtutil gli security
+    get last 3 events
+        wevtutil qe security /c:3 /f:text
+    View newest 10 System Logs
+        Get-EventLog -LogName System -Newest 10
+    View the entire message field in the Security Log
+        Get-Eventlog -LogName Security | ft -wrap
+    
+    
+    gci -Path 'C:\Windows\Prefetch' -ErrorAction Continue | select * | select -first 5
+    
+    get-eventlog -logname system | where-object {$_.Message -match "flag"}
+    
+    
+    
     
