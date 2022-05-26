@@ -1,4 +1,6 @@
 xfreerdp /u:student /v:10.50.24.101 /dynamic-resolution +glyph-cache +clipboard
+mstsc /v:x.x.x.x /<user> /fullscreen
+
 domain controller 10.21.0.1
 admin station             2  10.50.38.234
 file_server               3
