@@ -85,7 +85,7 @@ DAY5
     Get-item HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System   *** where user account control settings are located
     listdlls                            *** reports .dlls loaded into processes
     loadord                             *** shows service load order
-    
+    netsh advfirewall show allprofiles  *** shows firewall rules
     
 DAY7
     
