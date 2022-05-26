@@ -100,3 +100,35 @@ DAY6
     sudo lsof -i ls
     -P -n
     
+DAY8
+    
+    auth events: /var/log/auth.log
+    current user: /var/run/utmp
+    login history: /var/log/wtmp
+    bad login: /var/log/btmp
+    catch all: /var/log/(messages/syslog)
+    config file: /etc/rsyslog.conf          *** facility.severity 
+    service: /usr/sbin/rsyslogd             *** note facility codes and severity codes
+    
+    
+    /etc/loorgrotate.conf * file size/age limit?
+    
+    auditctl - control/config command *** try -l 
+    aureport - summary reports of audit logs *** -au shows auth logs
+    ausearch - query audit logs
+    
+    try journalctl
+    journalctl --list-boots    *** shows all boots of computer
+    journalctl -b <boot id>    *** shows all logs from that boots period of time 
+    journalctl -u ssh.service  *** shows all ssh logs from the beginning of machine
+    journalctl -u ssh.service --since "2 days ago" 
+    
+    
+    
+    
+    
+    
+    
+    ls /lib/systemd/system
+    systemctl v
+    
