@@ -91,6 +91,9 @@ DAY6
     cron daemon checks /var/spool/cron, /etc/cron.d/ /etc/crontab per minute. executes any commands according to time.
     jobs *** list of jobs running in background
     cron jobs *** run as root and rigidly sceduled or system-wide maintenance tasks (cleaing /tmp or rotating logs)
+    lib/systemd/system
+    /etc/crontab
+    /etc/cron.d
     
     sudo ls -l /proc/1600
     sudo lsof | tail -30
@@ -124,10 +127,12 @@ DAY8
     journalctl -u ssh.service --since "2 days ago" 
     
     
+    sudo ss -ntlp
     
+    /etc/profile *** read everytime someone logs in
+    /etc/bash.bashrc *** bashrc for entire system
     
-    
-    
+    ps -f *** shows child processes
     
     ls /lib/systemd/system
     systemctl v
