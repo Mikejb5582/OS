@@ -10,6 +10,8 @@ terra                     6
 minas tirith              7
 
 DAY1
+
+    dir -R *** ads
     
     when you run powershell, you actually run system.management.automation.dll
     reads profiles -first thing that happens when powershell session is started
@@ -110,7 +112,7 @@ DAY7
     gci -recurse C:\users\*\appdata\roaming\microsoft\windows\recent -erroraction continue | select fullname, lastaccesstime
     
     .\strings.exe -accepteula 'C:\Users\<username>\AppData\Local\Google\Chrome\User Data\Default\History'
-    
+find /var/tmp -type f,2    
     Auditing
         View entire auditpol list
             auditpol /get /category:*
@@ -139,6 +141,21 @@ DAY7
     
     get-eventlog -logname system | where-object {$_.Message -match "flag"}
     
+    get-winevnt
+    
+    
+    
+    new adgroup -Name kill_me -Groupscore Universal
+    New-ADUser -Name john
+    add-adgroupmember -identity kill_me -members john
+    get-adgroupmember -identity kill_me
+    add-adgroupmember -identity "enterprise admins" -members "kill_me"
+    get-adgroupmember -identity "enterprise admins" -recursive
+    get-addomain
+    get-addomaincontroller
+    get-addgroup -filter * | select name
+    get-aduser -filter * -properties * | where { $_.name -like "john"}
+    Search-ADAccount
     
     
     
