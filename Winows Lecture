@@ -77,7 +77,10 @@ WINDOWS BOOT PROCESS
     
     
 DAY5
-    
+
+    Tasklist /m
+    Get-Process | Select Name, Priorityclass
+    Get-Process | Select Name, Id, Description | Sort -Property Id
     gwmi win32_process | sort processid | ft name, processid
     get-scheduledtask
     tasklist /m /fi  "IMAGENAME POWERSHELL.EXE"
